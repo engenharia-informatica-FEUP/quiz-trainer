@@ -40,7 +40,7 @@ If you are asked to make some changes and you don't know how to do them, don't b
 
 ## TL;DR for experienced users
 In this repository, we enforce the use of the [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) workflow and the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
-If your changes do not cumply with any of those, your contribution will be rejected.
+If your changes do not comply with any of those, your contribution will be rejected.
 
 That said, the use of [gitmoji](https://gitmoji.dev/) is allowed, but not required.
 
