@@ -23,7 +23,7 @@ If you follow all steps in this page, your pull request will be welcome with ope
 8. Commit your changes using `git commit`
 
    In this repository, we follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
-   *Your contribution **will not** be accepted if your commits do not follow said specification.*
+   *Your contribution **will not** be accepted if your commits do not follow said specification*.
    
    That said, you can use [gitmoji](https://gitmoji.dev/) in your commit message to spice it up a bit.
    An acceptable commit message with gitmoji in it would look something like `docs(readme): :memo: add instalation instructions`.
