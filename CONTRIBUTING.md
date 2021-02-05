@@ -3,7 +3,7 @@ First of all, thank you for your interest in contributing to this repository! :r
 However, before you create your pull request (or commit), there are a few things you need to know!
 
 ## Contributing
-We all know how frightening it is contributing for the first time to a repository. Don't worry, though!
+We all know how frightening contributing for the first time to a repository is. Don't worry, though!
 If you follow all steps in this page, your pull request will be welcome with open arms!
 
 1. Make sure you have Git installed on your computer
