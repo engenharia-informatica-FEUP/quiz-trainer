@@ -34,7 +34,7 @@ If you follow all steps in this page, your pull request will be welcome with ope
     The base for your pull should be the `develop` branch.
 
 If you've completed these steps, you should now have an open pull request in this repository.
-Now, you can sit back, relax, and wait until three members of the @MIEIC-FEUP/quiz-trainer-core team review your pull request.
+Now, you can sit back, relax, and wait until at least two members of the @MIEIC-FEUP/quiz-trainer-core team review your pull request.
 
 If you are asked to make some changes and you don't know how to do them, don't be afraid to ask! We are here to help you!
 
