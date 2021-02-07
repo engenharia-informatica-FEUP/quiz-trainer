@@ -151,7 +151,7 @@
                     <div class="row my-5 mx-auto">
                         <input id="check" class="btn btn-success col m-1" type="submit" value="Check">
                         <button id="fill" class="btn btn-outline-primary col m-1">Fill</button>
-                        <input id="clear" class="btn btn-outline-danger col m-1" type="reset" value="Clear">
+                        <button id="clear" class="btn btn-outline-danger col m-1">Clear</button>
                     </div>
                 </form>
             </section>
@@ -163,22 +163,29 @@
         </aside>
     </div>
     <script>
+        const answers = [ '1', '3', '3', '1' ];
+    </script>
+    <script>
+        function resetAnswers(element) {
+            element.querySelectorAll('input').forEach(input => {
+                // Reset input elements inside element
+                input.value = input.defaultValue;
+                input.checked = input.defaultChecked;
+
+                input.classList.remove('js-correct-answer', 'js-wrong-answer');
+            });
+        }
+
         document.querySelectorAll(".js-reset-fieldset").forEach(fieldsetClearButton => {
             fieldsetClearButton.addEventListener('click', event => {
                 event.preventDefault();
 
                 const fieldset = fieldsetClearButton.parentElement;
-                fieldset.querySelectorAll('input').forEach(input => {
-                    // Reset input elements inside fieldset
-                    input.value = input.defaultValue;
-                    input.checked = input.defaultChecked;
-                });
+                resetAnswers(fieldset);
             });
         });
     </script>
     <script>
-        const answers = [ '1', '3', '3', '1' ];
-
         document.querySelectorAll('input:not([type="reset"]):not([type="submit"])')
             .forEach(input => {
                 input.addEventListener('change', () =>  {
@@ -205,6 +212,39 @@
                     }
                 });
             });
+        });
+    </script>
+    <script>
+        const fillButton = document.querySelector('#fill');
+        fillButton.addEventListener('click', event => {
+            event.preventDefault();
+
+            const form = document.querySelector('form');
+            resetAnswers(form);
+
+            answers.forEach((answer, key) => {
+                const inputs = document.querySelectorAll(`input[name="${key}"]`);
+                inputs.forEach(input => {
+                    switch (input.type) {
+                        case "radio":
+                        case "checkbox":
+                            if (input.value === answer)
+                                input.checked = true;
+                            break;
+                        default:
+                            break;
+                    }                    
+                });
+            });
+        });
+    </script>
+    <script>
+        const clearButton = document.querySelector('#clear');
+        clearButton.addEventListener('click', event => {
+            event.preventDefault();
+
+            const form = document.querySelector('form');
+            resetAnswers(form);
         });
     </script>
 </body>
