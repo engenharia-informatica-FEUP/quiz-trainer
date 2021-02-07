@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPRO 20/21: TE01</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .container > aside {
+            width: 10%;
+        }
+
+        .container > aside > div {
+            position: sticky;
+            top: 25vh;
+        }
+
+        .container label kbd {
+            background-color: #212529ee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <main class="w-75 mx-auto">
+            <h1 class="my-5">FPRO 20/21: TE01</h1>
+            <section>
+                <form action="javascript:void()">
+                    <fieldset class="p-4 my-3 bg-light shadow">
+                        <div class="prompt mb-4">
+                            <p>Which algorithm do you choose to find a number in a sorted list of numbers?</p>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="0" id="0-0" value="0">
+                            <label class="form-check-label" for="0-0"><span>Bubble sort</span></label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="0" id="0-1" value="1">
+                            <label class="form-check-label" for="0-1"><span>Binary search</span></label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="0" id="0-2" value="2">
+                            <label class="form-check-label" for="0-2"><span>Linear search</span></label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="0" id="0-3" value="3">
+                            <label class="form-check-label" for="0-3"><span>Merge sorted lists</span></label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="p-4 my-3 bg-light shadow">
+                        <div class="prompt mb-4">
+                            <p>What is the output of the following statements?</p>
+                            <pre class="fw-bold"><code>s = "hello world!"<br>s = s.split()<br>s = ''.join(s)<br>print(s)</code></pre>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="1" id="1-0" value="0">
+                            <label class="form-check-label" for="1-0"><kbd>hello world!</kbd></label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="1" id="1-1" value="1">
+                            <label class="form-check-label" for="1-1"><kbd>['hello', 'world!']</kbd></label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="1" id="1-2" value="2">
+                            <label class="form-check-label" for="1-2"><kbd>['hello world!']</kbd></label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="1" id="1-3" value="3">
+                            <label class="form-check-label" for="1-3"><kbd>helloworld!</kbd></label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="p-4 my-3 bg-light shadow">
+                        <div class="prompt mb-4">
+                            <p>What is the output of the following statements?</p>
+                            <pre class="fw-bold"><code>l = list(enumerate(range(0, 8, 2)))<br>print(l)</code></pre>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="2" id="2-0" value="0">
+                            <label class="form-check-label" for="2-0"><kbd>[(0, 0), (2, 2), (4, 4), (6, 6)]</kbd></label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="2" id="2-1" value="1">
+                            <label class="form-check-label" for="2-1"><kbd>[(0, 0), (1, 2), (2, 4), (3, 6), (4, 8)]</kbd></label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="2" id="2-2" value="2">
+                            <label class="form-check-label" for="2-2"><kbd>[(0, 0), (2, 2), (4, 4), (6, 6), (8, 8)]</kbd></label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="2" id="2-3" value="3">
+                            <label class="form-check-label" for="2-3"><kbd>[(0, 0), (1, 2), (2, 4), (3, 6)]</kbd></label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="p-4 my-3 bg-light shadow">
+                        <div class="prompt mb-4">
+                            <p>What is the output of the following statements?</p>
+                            <pre class="fw-bold"><code>def foo():<br>    while True:<br>        yield 1<br>        yield 2<br>for _ in range(2): print(next(foo()))</code></pre>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="3" id="3-0" value="0">
+                            <label class="form-check-label" for="3-0"><kbd>&lt;generator object f at 0x7f08d906a4c0&gt;</kbd></label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="3" id="3-1" value="1">
+                            <label class="form-check-label" for="3-1"><kbd>1\n1</kbd></label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="3" id="3-2" value="2">
+                            <label class="form-check-label" for="3-2"><span>None, there's a <em>runtime</em> error</span></label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="3" id="3-3" value="3">
+                            <label class="form-check-label" for="3-3"><kbd>1\n2</kbd></label>
+                        </div>
+                    </fieldset>
+                    <div class="row my-5 mx-auto">
+                        <input id="check" class="btn btn-success col m-1" type="submit" value="Check">
+                        <input id="fill" class="btn btn-outline-primary col m-1" type="submit" value="Fill">
+                        <input id="clear" class="btn btn-outline-danger col m-1" type="reset" value="Clear">
+                    </div>
+                </form>
+            </section>
+        </main>
+        <aside class="mx-auto">
+            <div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis temporibus placeat corporis? Laudantium quam quis magnam tempore quod accusantium suscipit, aspernatur sunt in aperiam animi magni commodi? Magnam, vitae fuga.</p>
+            </div>
+        </aside>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
