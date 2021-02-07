@@ -20,16 +20,46 @@
 
         .container {
             display: flex;
-            flex-direction: row;
+            flex-direction: column-reverse;
         }
 
-        .container > aside {
-            width: 10%;
+        .container > * {
+            width: 100%;
         }
 
-        .container > aside > div {
-            position: sticky;
-            top: 25vh;
+        .container > main > h1 {
+            display: none;
+        }
+
+        @media (min-width: 992px) {
+            :root {
+                --form-width: 70%;
+            }
+
+            .container {
+                flex-direction: row;
+            }
+
+            .container > main {
+                width: var(--form-width);
+            }
+
+            .container > aside {
+                width: calc(100% - var(--form-width) - 3rem);
+            }
+
+            .container > main > h1 {
+                display: block;
+            }
+
+            .container > aside > h1 {
+                display: none;
+            }
+
+            .container > aside > div {
+                position: sticky;
+                top: 25vh;
+            }
         }
 
         .container label kbd {
@@ -57,7 +87,7 @@
 </head>
 <body>
     <div class="container">
-        <main class="w-75 mx-auto">
+        <main class="mx-auto">
             <h1 class="my-5">FPRO 20/21: TE01</h1>
             <section>
                 <form>
@@ -161,7 +191,8 @@
             </section>
         </main>
         <aside class="mx-auto">
-            <div>
+            <h1 class="my-5">FPRO 20/21: TE01</h1>
+            <div class="p-4 my-3 bg-light bg-gradient shadow">
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis temporibus placeat corporis? Laudantium quam quis magnam tempore quod accusantium suscipit, aspernatur sunt in aperiam animi magni commodi? Magnam, vitae fuga.</p>
             </div>
         </aside>
