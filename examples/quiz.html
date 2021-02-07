@@ -9,6 +9,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <style>
+        :root {
+            --bs-success-shadow: #19875440;
+            --bs-danger-shadow: #dc354540;
+        }
+
         .container {
             display: flex;
             flex-direction: row;
@@ -25,6 +30,24 @@
 
         .container label kbd {
             background-color: #212529ee;
+        }
+
+        input.js-correct-answer:checked {
+            border-color: var(--bs-success);
+            box-shadow: 0 0 0 0.25rem var(--bs-success-shadow)
+        }
+
+        input[type="radio"].js-correct-answer:checked {
+            background-color: var(--bs-success);
+        }
+
+        input.js-wrong-answer:checked {
+            border-color: var(--bs-danger);
+            box-shadow: 0 0 0 0.25rem var(--bs-danger-shadow)
+        }
+
+        input[type="radio"].js-wrong-answer:checked {
+            background-color: var(--bs-danger);
         }
     </style>
 </head>
@@ -127,7 +150,7 @@
                     </fieldset>
                     <div class="row my-5 mx-auto">
                         <input id="check" class="btn btn-success col m-1" type="submit" value="Check">
-                        <input id="fill" class="btn btn-outline-primary col m-1" type="submit" value="Fill">
+                        <button id="fill" class="btn btn-outline-primary col m-1">Fill</button>
                         <input id="clear" class="btn btn-outline-danger col m-1" type="reset" value="Clear">
                     </div>
                 </form>
@@ -149,6 +172,37 @@
                     // Reset input elements inside fieldset
                     input.value = input.defaultValue;
                     input.checked = input.defaultChecked;
+                });
+            });
+        });
+    </script>
+    <script>
+        const answers = [ '1', '3', '3', '1' ];
+
+        document.querySelectorAll('input:not([type="reset"]):not([type="submit"])')
+            .forEach(input => {
+                input.addEventListener('change', () =>  {
+                    input.classList.remove('js-correct-answer', 'js-wrong-answer');
+                });
+            });
+
+        const checkButton = document.querySelector('#check');
+        checkButton.addEventListener('click', event => {
+            event.preventDefault();
+
+            const form = document.querySelector('form');
+            const formData = new FormData(form);
+
+            formData.forEach((answer, key) => {
+                const isAnswerCorrect = answers[key] === answer
+                const inputs = document.querySelectorAll(`input[name="${key}"]`);
+                inputs.forEach(input => {
+                    if (input.value === answer) {
+                        // We do this check specifically because of radios,
+                        // where several elements can have the same name
+
+                        input.classList.add(isAnswerCorrect ? 'js-correct-answer' : 'js-wrong-answer');
+                    }
                 });
             });
         });
