@@ -164,8 +164,7 @@
     </div>
     <script>
         const answers = [ '1', '3', '3', '1' ];
-    </script>
-    <script>
+        
         function resetAnswers(element) {
             element.querySelectorAll('input').forEach(input => {
                 // Reset input elements inside element
@@ -184,8 +183,7 @@
                 resetAnswers(fieldset);
             });
         });
-    </script>
-    <script>
+        
         document.querySelectorAll('input:not([type="reset"]):not([type="submit"])')
             .forEach(input => {
                 input.addEventListener('change', () =>  {
@@ -213,8 +211,7 @@
                 });
             });
         });
-    </script>
-    <script>
+        
         const fillButton = document.querySelector('#fill');
         fillButton.addEventListener('click', event => {
             event.preventDefault();
@@ -237,8 +234,7 @@
                 });
             });
         });
-    </script>
-    <script>
+        
         const clearButton = document.querySelector('#clear');
         clearButton.addEventListener('click', event => {
             event.preventDefault();
