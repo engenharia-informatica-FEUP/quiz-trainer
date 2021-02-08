@@ -54,15 +54,13 @@
             background-color: #212529ee;
         }
 
-        input.js-correct-answer {
+        input.js-correct-answer:checked {
             border-color: var(--bs-success);
+            box-shadow: 0 0 0 0.25rem var(--bs-success-shadow)
         }
 
-        input[type="radio"].js-correct-answer {
-            box-shadow: 0 0 0 0.25rem var(--bs-success-shadow);
-
+        input[type="radio"].js-correct-answer:checked {
             background-color: var(--bs-success);
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e")
         }
 
         input.js-wrong-answer:checked {
@@ -197,15 +195,8 @@
                 input.value = input.defaultValue;
                 input.checked = input.defaultChecked;
 
-                clearFeedback(element);
+                input.classList.remove('js-correct-answer', 'js-wrong-answer');
             });
-        }
-
-        function clearFeedback(element) {
-            if (element.nodeName === 'INPUT')
-                element.classList.remove('js-correct-answer', 'js-wrong-answer');
-            else
-                element.querySelectorAll('input').forEach(clearFeedback);
         }
 
         document.querySelectorAll(".js-reset-fieldset").forEach(fieldsetClearButton => {
@@ -219,8 +210,9 @@
         
         document.querySelectorAll('input:not([type="reset"]):not([type="submit"])')
             .forEach(input => {
-                const fieldset = input.parentElement.parentElement;
-                input.addEventListener('change', () => clearFeedback(fieldset));
+                input.addEventListener('change', () =>  {
+                    input.classList.remove('js-correct-answer', 'js-wrong-answer');
+                });
             });
 
         const checkButton = document.querySelector('#check');
@@ -231,21 +223,15 @@
             const formData = new FormData(form);
 
             formData.forEach((answer, key) => {
-                const correctAnswer = answers[key]
-
+                const isAnswerCorrect = answers[key] === answer
                 const inputs = document.querySelectorAll(`input[name="${key}"]`);
                 inputs.forEach(input => {
-                    // We do this check specifically because of radios,
-                    // where several elements can have the same name
+                    if (input.value === answer) {
+                        // We do this check specifically because of radios,
+                        // where several elements can have the same name
 
-                    // This WILL need changing in the future
-                    // to support other input types.
-                    // A method dedicated to filling in answers would be good,
-                    // since we could also use it in the fill button functionality
-                    if (input.value === correctAnswer)
-                        input.classList.add('js-correct-answer');
-                    else if(input.value === answer) // The answer is wrong (else) and the user selected it (if)
-                        input.classList.add('js-wrong-answer');
+                        input.classList.add(isAnswerCorrect ? 'js-correct-answer' : 'js-wrong-answer');
+                    }
                 });
             });
         });
@@ -263,7 +249,8 @@
                     switch (input.type) {
                         case "radio":
                         case "checkbox":
-                            input.checked = input.value === answer;
+                            if (input.value === answer)
+                                input.checked = true;
                             break;
                         default:
                             break;
