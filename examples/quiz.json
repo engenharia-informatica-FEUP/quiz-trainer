@@ -1,0 +1,96 @@
+{
+    "language": "en",
+    "title": "FPRO 20/21: TE01",
+    "questions": [
+        {
+            "questionType": "single-choice",
+            "prompt": { "text": "Which algorithm do you choose to find a number in a sorted list of numbers?" },
+            "answers": [
+                { "content": { "text": "Bubble sort" }},
+                {
+                    "content": { "text": "Binary search" },
+                    "correct": true
+                },
+                { "content": { "text": "Linear search" }},
+                { "content": { "text": "Merge sorted lists" }}
+            ]
+        },
+        {
+            "questionType": "single-choice",
+            "prompt": [
+                { "text": "What is the output of the following statements?" },
+                {
+                    "text": [
+                        "s = \"hello world!\"",
+                        "s = s.split()",
+                        "s = ''.join(s)",
+                        "print(s)"
+                    ],
+                    "type": "block-code"
+                }
+            ],
+            "answers": [
+                { "content": { "text": "hello world!", "type": "inline-code" }},
+                { "content": { "text": "['hello', 'world!']", "type": "inline-code" }},
+                { "content": { "text": "['hello world!']", "type": "inline-code" }},
+                {
+                    "content": { "text": "helloworld!", "type": "inline-code" },
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "questionType": "single-choice",
+            "prompt": [
+                { "text": "What is the output of the following statements?" },
+                { 
+                    "text": [
+                        "l = list(enumerate(range(0, 8, 2)))",
+                        "print(l)"
+                    ],
+                    "type":"block-code"
+                }
+            ],
+            "answers": [
+                { "content": { "text": "[(0, 0), (2, 2), (4, 4), (6, 6)]", "type": "inline-code" }},
+                { "content": { "text": "[(0, 0), (1, 2), (2, 4), (3, 6), (4, 8)]", "type": "inline-code" }},
+                { "content": { "text": "[(0, 0), (2, 2), (4, 4), (6, 6), (8, 8)]", "type": "inline-code" }},
+                {
+                    "content": { "text": "[(0, 0), (1, 2), (2, 4), (3, 6)]", "type": "inline-code" },
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "questionType": "single-choice",
+            "prompt": [
+                { "text": "What is the output of the following statements?" },
+                { 
+                    "text": [
+                        "def foo():",
+                        "    while True:",
+                        "        yield 1",
+                        "        yield 2",
+                        "for _ in range(2): print(next(foo()))"
+                    ],
+                    "type": "block-code"
+                }
+            ],
+            "answers": [
+                { "content": { "text": "`<generator object f at 0x7f08d906a4c0>`", "type": "inline-code" }},
+                {
+                    "content": { "text": "`1\n1`", "type": "inline-code" },
+                    "correct": true
+                },
+                {
+                    "content": [ 
+                        { "text": "None, there's a " },
+                        { "text": "runtime", "type": "italic" },
+                        { "text": "error" }
+                    ]
+                },
+                { "content": { "text": "`1\n2`", "type": "inline-code" }}
+            ]
+        }
+    ]
+}
