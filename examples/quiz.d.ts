@@ -9,7 +9,7 @@ type Component = Component[] | {
     type?: "normal" | "italic" | "bold" | "underlined" | "strikethrough" | "inline-code" | "block-code" | "math"
 }
 
-type Question = ChoiceQuestion | TrueFalseQuestion | ShortAnswerQuestion | DragDropQuestion;
+type Question = ChoiceQuestion | TrueFalseQuestion | ShortAnswerQuestion;
 
 // ---------------------------------
 
@@ -32,10 +32,4 @@ type ShortAnswerQuestion = {
     questionType: "short-answer",
     prompt: Component,
     correct: string
-}
-
-type DragDropQuestion = {
-    questionType: "drag-n-drop",
-    prompt: Component,
-    // TBD
 }
