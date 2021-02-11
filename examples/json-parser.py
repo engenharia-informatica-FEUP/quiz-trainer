@@ -11,7 +11,7 @@ def has_correct(dic: dict) -> dict:
 
     #Iterates through the fields inside a question (there might be only one field depending on the question type) and checks recursively if there is any 'correct' parameter
     for val in dic:
-        if type(dic[val]) == dict or type(dic[val]) == dict:
+        if type(dic[val]) == dict:
             has_correct(dic[val])
         else:
             if val == 'correct':    #If we find a 'correct' value, we send return the dict {'correct': boolean} directly and end the function call
