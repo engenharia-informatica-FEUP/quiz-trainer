@@ -54,22 +54,34 @@
             background-color: #212529ee;
         }
 
-        input.js-correct-answer:checked {
-            border-color: var(--bs-success);
-            box-shadow: 0 0 0 0.25rem var(--bs-success-shadow)
+        /* Feedback for correct answers */
+        fieldset.quiz-question-single-choice input.quiz-feedback-correct-answer:checked,
+        fieldset.quiz-question-multiple-choice input.quiz-feedback-correct-answer:checked,
+        fieldset.quiz-question-true-or-false input.quiz-feedback-correct-answer:checked,
+        fieldset.quiz-question-short-answer input.quiz-feedback-correct-answer {
+            box-shadow: 0 0 0 0.25rem var(--bs-success-shadow)!important;
+            border-color: var(--bs-success)!important;
         }
 
-        input[type="radio"].js-correct-answer:checked {
-            background-color: var(--bs-success);
+        fieldset.quiz-question-single-choice input.quiz-feedback-correct-answer:checked,
+        fieldset.quiz-question-multiple-choice input.quiz-feedback-correct-answer:checked,
+        fieldset.quiz-question-true-or-false input.quiz-feedback-correct-answer:checked {
+            background-color: var(--bs-success)!important;
         }
 
-        input.js-wrong-answer:checked {
-            border-color: var(--bs-danger);
-            box-shadow: 0 0 0 0.25rem var(--bs-danger-shadow)
+        /* Feedback for wrong answers */
+        fieldset.quiz-question-single-choice input.quiz-feedback-wrong-answer:checked,
+        fieldset.quiz-question-multiple-choice input.quiz-feedback-wrong-answer,
+        fieldset.quiz-question-true-or-false input.quiz-feedback-wrong-answer:checked,
+        fieldset.quiz-question-short-answer input.quiz-feedback-wrong-answer {
+            box-shadow: 0 0 0 0.25rem var(--bs-danger-shadow)!important;
+            border-color: var(--bs-danger)!important;
         }
 
-        input[type="radio"].js-wrong-answer:checked {
-            background-color: var(--bs-danger);
+        fieldset.quiz-question-single-choice input.quiz-feedback-wrong-answer:checked,
+        fieldset.quiz-question-multiple-choice input.quiz-feedback-wrong-answer:checked,
+        fieldset.quiz-question-true-or-false input.quiz-feedback-wrong-answer:checked {
+            background-color: var(--bs-danger)!important;
         }
     </style>
 </head>
@@ -80,7 +92,7 @@
             <main class="mx-auto">
                 <section>
                     <form>
-                        <fieldset class="p-4 my-3 bg-light shadow">
+                        <fieldset id="0" class="quiz-question-single-choice p-4 my-3 bg-light shadow">
                             <div class="prompt mb-4">
                                 <p>Which algorithm do you choose to find a number in a sorted list of numbers?</p>
                             </div>
@@ -100,9 +112,9 @@
                                 <input class="form-check-input" type="radio" name="0" id="0-3" value="3">
                                 <label class="form-check-label" for="0-3"><span>Merge sorted lists</span></label>
                             </div>
-                            <button class="btn btn-outline-danger mt-3 px-5 js-reset-fieldset">Clear answer</button>
+                            <button class="btn btn-outline-danger mt-3 px-5 quiz-reset-fieldset">Clear answer</button>
                         </fieldset>
-                        <fieldset class="p-4 my-3 bg-light shadow">
+                        <fieldset id="1" class="quiz-question-single-choice p-4 my-3 bg-light shadow">
                             <div class="prompt mb-4">
                                 <p>What is the output of the following statements?</p>
                                 <pre class="fw-bold"><code>s = "hello world!"<br>s = s.split()<br>s = ''.join(s)<br>print(s)</code></pre>
@@ -123,9 +135,9 @@
                                 <input class="form-check-input" type="radio" name="1" id="1-3" value="3">
                                 <label class="form-check-label" for="1-3"><kbd>helloworld!</kbd></label>
                             </div>
-                            <button class="btn btn-outline-danger mt-3 px-5 js-reset-fieldset">Clear answer</button>
+                            <button class="btn btn-outline-danger mt-3 px-5 quiz-reset-fieldset">Clear answer</button>
                         </fieldset>
-                        <fieldset class="p-4 my-3 bg-light shadow">
+                        <fieldset id="2" class="quiz-question-single-choice p-4 my-3 bg-light shadow">
                             <div class="prompt mb-4">
                                 <p>What is the output of the following statements?</p>
                                 <pre class="fw-bold"><code>l = list(enumerate(range(0, 8, 2)))<br>print(l)</code></pre>
@@ -146,30 +158,55 @@
                                 <input class="form-check-input" type="radio" name="2" id="2-3" value="3">
                                 <label class="form-check-label" for="2-3"><kbd>[(0, 0), (1, 2), (2, 4), (3, 6)]</kbd></label>
                             </div>
-                            <button class="btn btn-outline-danger mt-3 px-5 js-reset-fieldset">Clear answer</button>
+                            <button class="btn btn-outline-danger mt-3 px-5 quiz-reset-fieldset">Clear answer</button>
                         </fieldset>
-                        <fieldset class="p-4 my-3 bg-light shadow">
+                        <fieldset id="3" class="quiz-question-multiple-choice p-4 my-3 bg-light shadow">
                             <div class="prompt mb-4">
                                 <p>What is the output of the following statements?</p>
                                 <pre class="fw-bold"><code>def foo():<br>    while True:<br>        yield 1<br>        yield 2<br>for _ in range(2): print(next(foo()))</code></pre>
                             </div>
                             <div class="form-check my-2">
-                                <input class="form-check-input" type="radio" name="3" id="3-0" value="0">
+                                <input class="form-check-input" type="checkbox" name="3" id="3-0" value="0">
                                 <label class="form-check-label" for="3-0"><kbd>&lt;generator object f at 0x7f08d906a4c0&gt;</kbd></label>
                             </div>
                             <div class="form-check my-2">
-                                <input class="form-check-input" type="radio" name="3" id="3-1" value="1">
+                                <input class="form-check-input" type="checkbox" name="3" id="3-1" value="1">
                                 <label class="form-check-label" for="3-1"><kbd>1\n1</kbd></label>
                             </div>
                             <div class="form-check my-2">
-                                <input class="form-check-input" type="radio" name="3" id="3-2" value="2">
+                                <input class="form-check-input" type="checkbox" name="3" id="3-2" value="2">
                                 <label class="form-check-label" for="3-2"><span>None, there's a <em>runtime</em> error</span></label>
                             </div>
                             <div class="form-check my-2">
-                                <input class="form-check-input" type="radio" name="3" id="3-3" value="3">
+                                <input class="form-check-input" type="checkbox" name="3" id="3-3" value="3">
                                 <label class="form-check-label" for="3-3"><kbd>1\n2</kbd></label>
                             </div>
-                            <button class="btn btn-outline-danger mt-3 px-5 js-reset-fieldset">Clear answer</button>
+                            <button class="btn btn-outline-danger mt-3 px-5 quiz-reset-fieldset">Clear answer</button>
+                        </fieldset>
+                        <fieldset id="4" class="quiz-question-short-answer p-4 my-3 bg-light shadow">
+                            <div class="prompt mb-4">
+                                <p>What is the output of the following statements?</p>
+                                <pre class="fw-bold"><code>def foo():<br>    while True:<br>        yield 1<br>        yield 2<br>for _ in range(2): print(next(foo()))</code></pre>
+                            </div>
+                            <div class="my-2">
+                                <input class="form-control" type="text" name="4" id="4-0" autocomplete="off">
+                            </div>
+                            <button class="btn btn-outline-danger mt-3 px-5 quiz-reset-fieldset">Clear answer</button>
+                        </fieldset>
+                        <fieldset id="5" class="quiz-question-true-or-false p-4 my-3 bg-light shadow">
+                            <div class="prompt mb-4">
+                                <p>What is the output of the following statements?</p>
+                                <pre class="fw-bold"><code>def foo():<br>    while True:<br>        yield 1<br>        yield 2<br>for _ in range(2): print(next(foo()))</code></pre>
+                            </div>
+                            <div class="form-check my-2">
+                                <input class="form-check-input" type="radio" name="5" id="5-0" value="true">
+                                <label class="form-check-label" for="5-0"><span>True</span></label>
+                            </div>
+                            <div class="form-check my-2">
+                                <input class="form-check-input" type="radio" name="5" id="5-1" value="false">
+                                <label class="form-check-label" for="5-1"><span>False</span></label>
+                            </div>
+                            <button class="btn btn-outline-danger mt-3 px-5 quiz-reset-fieldset">Clear answer</button>
                         </fieldset>
                         <div class="row my-5 mx-auto">
                             <input id="check" class="btn btn-success col m-1" type="submit" value="Check answers">
@@ -187,52 +224,155 @@
         </div>
     </div>
     <script>
-        const answers = [ '1', '3', '3', '1' ];
-        
-        function resetAnswers(element) {
-            element.querySelectorAll('input').forEach(input => {
-                // Reset input elements inside element
-                input.value = input.defaultValue;
-                input.checked = input.defaultChecked;
+        const questions = [
+            {
+                "questionType": "single-choice",
+                "answers": [ {}, { "correct": true }, {}, {} ]
+            },
+            {
+                "questionType": "single-choice",
+                "answers": [ {}, {}, {}, { "correct": true } ]
+            },
+            {
+                "questionType": "single-choice",
+                "answers": [ {}, {}, {}, { "correct": true } ]
+            },
+            {
+                "questionType": "single-choice",
+                "answers": [ {}, { "correct": true }, {}, { "correct": true } ]
+            },
+            {
+                "questionType": "short-answer",
+                "correct": "hi"
+            },
+            {
+                "questionType": "true-or-false",
+                "correct": true
+            }
+        ];
 
-                input.classList.remove('js-correct-answer', 'js-wrong-answer');
-            });
+        // --------------------------------------------------------------------
+
+        function getFieldset(element) {
+            if (element.nodeName === 'FIELDSET')
+                return element;
+            else if (element.parentElement)
+                return getFieldset(element.parentElement);
+            
+            return null;
         }
 
-        document.querySelectorAll(".js-reset-fieldset").forEach(fieldsetClearButton => {
+        function getQuestionFromElement(element) {
+            const fieldset = getFieldset(element);
+            if (!fieldset)
+                return null;
+
+            const index = parseInt(fieldset.id);
+            return questions[index];
+        }
+
+        function clearFeedback(element) {
+            const fieldset = getFieldset(element);
+            if (!fieldset)
+                return element.querySelectorAll('fieldset').forEach(clearFeedback);
+
+            fieldset.querySelectorAll('input')
+                .forEach(input => input.classList.remove('quiz-feedback-correct-answer', 'quiz-feedback-wrong-answer')); 
+        }
+        
+        function resetAnswers(element) {
+            const fieldset = getFieldset(element);
+            if (!fieldset)
+                return element.querySelectorAll('fieldset').forEach(resetAnswers);
+
+            clearFeedback(fieldset);
+            fieldset.querySelectorAll('input').forEach(input => {
+                input.value = input.defaultValue;
+                input.checked = input.defaultChecked;
+            });
+
+        }
+
+        document.querySelectorAll(".quiz-reset-fieldset").forEach(fieldsetClearButton => {
             fieldsetClearButton.addEventListener('click', event => {
                 event.preventDefault();
 
-                const fieldset = fieldsetClearButton.parentElement;
-                resetAnswers(fieldset);
+                const fieldset = getFieldset(fieldsetClearButton);
+                if (fieldset) 
+                    resetAnswers(fieldset);
             });
         });
-        
-        document.querySelectorAll('input:not([type="reset"]):not([type="submit"])')
-            .forEach(input => {
-                input.addEventListener('change', () =>  {
-                    input.classList.remove('js-correct-answer', 'js-wrong-answer');
-                });
-            });
 
+        document.querySelectorAll('input:not([type="reset"]):not([type="submit"])')
+            .forEach(input => input.addEventListener('input', () => clearFeedback(input)));
+        
+        
         const checkButton = document.querySelector('#check');
         checkButton.addEventListener('click', event => {
             event.preventDefault();
 
             const form = document.querySelector('form');
-            const formData = new FormData(form);
+            clearFeedback(form);
 
-            formData.forEach((answer, key) => {
-                const isAnswerCorrect = answers[key] === answer
-                const inputs = document.querySelectorAll(`input[name="${key}"]`);
-                inputs.forEach(input => {
-                    if (input.value === answer) {
-                        // We do this check specifically because of radios,
-                        // where several elements can have the same name
+            // Provide feedback on single choice questions
+            form.querySelectorAll('fieldset.quiz-question-single-choice').forEach(fieldset => {
+                const question = getQuestionFromElement(fieldset);
+                const input = fieldset.querySelector('input:checked');
+                if (!input) // In case the user hasn't answered, we do not want to provide feedback
+                    return;
 
-                        input.classList.add(isAnswerCorrect ? 'js-correct-answer' : 'js-wrong-answer');
-                    }
+                const index = parseInt(input.value);
+                const isAnswerCorrect = question.answers[index].correct || false;
+                
+                fieldset.querySelectorAll('input').forEach(sibling =>
+                    sibling.classList.add(isAnswerCorrect ? 'quiz-feedback-correct-answer' : 'quiz-feedback-wrong-answer'));
+            });
+
+            // Provide feedback on multiple choice questions
+            form.querySelectorAll('fieldset.quiz-question-multiple-choice').forEach(fieldset => {
+                const question = getQuestionFromElement(fieldset);
+
+                // If there isn't at least one element selected,
+                // we shouldn't provide feedback for that question
+                if(!fieldset.querySelector('input:checked'))
+                    return;
+                
+                fieldset.querySelectorAll('input').forEach(input => {
+                    const index = parseInt(input.value);
+                    const correctAnswer = question.answers[index].correct || false;
+
+                    const isAnswerCorrect = input.checked === correctAnswer;
+                    input.classList.add(isAnswerCorrect ? 'quiz-feedback-correct-answer' : 'quiz-feedback-wrong-answer');
                 });
+            });
+
+            // Provide feedback on true or false questions
+            form.querySelectorAll('fieldset.quiz-question-true-or-false').forEach(fieldset => {
+                const question = getQuestionFromElement(fieldset);
+                const input = fieldset.querySelector('input:checked');
+                if (!input) // In case the user hasn't answered, we do not want to provide feedback
+                    return;
+
+                const option = input.value === 'true';
+                const isAnswerCorrect = (option === question.correct) === input.checked;
+
+                fieldset.querySelectorAll('input').forEach(sibling => {
+                    sibling.classList.add(isAnswerCorrect ? 'quiz-feedback-correct-answer' : 'quiz-feedback-wrong-answer');
+                });
+            });
+
+            // Provide feedback for short answer questions
+            form.querySelectorAll('fieldset.quiz-question-short-answer').forEach(fieldset => {
+                const question = getQuestionFromElement(fieldset);
+                const correctAnswers =
+                    typeof question.correct === 'string' ? [ question.correct] : question.correct;
+
+                const input = fieldset.querySelector('input');
+                if (!input.value)
+                    return;
+
+                const isAnswerCorrect = correctAnswers.indexOf(input.value) !== -1;
+                input.classList.add(isAnswerCorrect ? 'quiz-feedback-correct-answer' : 'quiz-feedback-wrong-answer');
             });
         });
         
@@ -243,19 +383,32 @@
             const form = document.querySelector('form');
             resetAnswers(form);
 
-            answers.forEach((answer, key) => {
-                const inputs = document.querySelectorAll(`input[name="${key}"]`);
-                inputs.forEach(input => {
-                    switch (input.type) {
-                        case "radio":
-                        case "checkbox":
-                            if (input.value === answer)
-                                input.checked = true;
-                            break;
-                        default:
-                            break;
-                    }                    
+            // Fill single and multiple choice questions
+            form.querySelectorAll('fieldset.quiz-question-single-choice, fieldset.quiz-question-multiple-choice').forEach(fieldset => {
+                const question = getQuestionFromElement(fieldset);
+                fieldset.querySelectorAll('input').forEach(input => {
+                    const index = parseInt(input.value);
+                    if (question.answers[index].correct)
+                        input.checked = true;
                 });
+            });
+
+            // Fill true or false questions
+            form.querySelectorAll('fieldset.quiz-question-true-or-false').forEach(fieldset => {
+                const question = getQuestionFromElement(fieldset);
+                const input = fieldset.querySelector(`input[value="${question.correct}"]`);
+                
+                input.checked = true;
+            });
+
+            // Fill short answer questions
+            form.querySelectorAll('fieldset.quiz-question-short-answer').forEach(fieldset => {
+                const question = getQuestionFromElement(fieldset);
+                const correctAnswers =
+                    typeof question.correct === 'string' ? [ question.correct ] : question.correct;
+
+                const input = fieldset.querySelector('input');
+                input.value = correctAnswers[0];    
             });
         });
         
