@@ -66,8 +66,8 @@ def parser(filepath):
 #------------Function call------------#
 
 if __name__ == "__main__":
-    #input the json file you want to parse in here
-    file = os.path.expanduser("~/git/parser/quiz.json")  
+    #input the relative path of the json file you want to parse in here
+    file = os.path.expanduser("quiz.json")  
 
 
     print(parser(file))
