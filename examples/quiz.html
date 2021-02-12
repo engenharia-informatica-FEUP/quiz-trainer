@@ -41,7 +41,7 @@
             }
 
             aside {
-                max-width: calc(100% - var(--form-width) - 3rem)!important;
+                max-width: calc(100% - var(--form-width) - 4rem)!important;
             }
 
             aside > div {
@@ -73,6 +73,7 @@
 
             width: 3.5ch;
             border-radius: 3px;
+            outline: none;
 
             --bg-color: #212529;
             --text-color: #e8e8e8;
@@ -81,7 +82,8 @@
             transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
         }
         
-        aside nav a:hover {
+        aside nav a:hover,
+        aside nav a:focus {
             background-color: var(--text-color);
             color: var(--bg-color);
         }
@@ -270,7 +272,7 @@
             </main>
             <aside class="mx-auto">
                 <div class="p-4 my-3 bg-light shadow">
-                    <h5>Navigation</h5>
+                    <h5>FPRO 20/21: TE01</h5>
                     <nav>
                         <a id="nav-1" href="#1"><span>1</span><span class="nav-feedback-color"></span></a>
                         <a id="nav-2" href="#2"><span>2</span><span class="nav-feedback-color"></span></a>
