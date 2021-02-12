@@ -214,25 +214,25 @@
                             </div>
                             <button class="btn btn-outline-danger mt-3 px-5 quiz-reset-fieldset">Clear answer</button>
                         </fieldset>
-                        <fieldset id="4" class="quiz-question-multiple-choice p-4 my-3 bg-light shadow">
+                        <fieldset id="4" class="quiz-question-single-choice p-4 my-3 bg-light shadow">
                             <div class="prompt mb-4">
                                 <p>What is the output of the following statements?</p>
                                 <pre class="fw-bold"><code>def foo():<br>    while True:<br>        yield 1<br>        yield 2<br>for _ in range(2): print(next(foo()))</code></pre>
                             </div>
                             <div class="form-check my-2">
-                                <input class="form-check-input" type="checkbox" name="4" id="4-0" value="0">
+                                <input class="form-check-input" type="radio" name="4" id="4-0" value="0">
                                 <label class="form-check-label" for="4-0"><kbd>&lt;generator object f at 0x7f08d906a4c0&gt;</kbd></label>
                             </div>
                             <div class="form-check my-2">
-                                <input class="form-check-input" type="checkbox" name="4" id="4-1" value="1">
+                                <input class="form-check-input" type="radio" name="4" id="4-1" value="1">
                                 <label class="form-check-label" for="4-1"><kbd>1\n1</kbd></label>
                             </div>
                             <div class="form-check my-2">
-                                <input class="form-check-input" type="checkbox" name="4" id="4-2" value="2">
+                                <input class="form-check-input" type="radio" name="4" id="4-2" value="2">
                                 <label class="form-check-label" for="4-2"><span>None, there's a <em>runtime</em> error</span></label>
                             </div>
                             <div class="form-check my-2">
-                                <input class="form-check-input" type="checkbox" name="4" id="4-3" value="3">
+                                <input class="form-check-input" type="radio" name="4" id="4-3" value="3">
                                 <label class="form-check-label" for="4-3"><kbd>1\n2</kbd></label>
                             </div>
                             <button class="btn btn-outline-danger mt-3 px-5 quiz-reset-fieldset">Clear answer</button>
@@ -240,7 +240,7 @@
                         <fieldset id="5" class="quiz-question-short-answer p-4 my-3 bg-light shadow">
                             <div class="prompt mb-4">
                                 <p>What is the output of the following statements?</p>
-                                <pre class="fw-bold"><code>def foo():<br>    while True:<br>        yield 1<br>        yield 2<br>for _ in range(2): print(next(foo()))</code></pre>
+                                <pre class="fw-bold"><code>def foo():<br>    while True:<br>        yield 1<br>        yield 2<br>print(next(foo()) + next(foo()))</code></pre>
                             </div>
                             <div class="my-2">
                                 <input class="form-control" type="text" name="5" id="5-0" autocomplete="off">
@@ -249,8 +249,9 @@
                         </fieldset>
                         <fieldset id="6" class="quiz-question-true-or-false p-4 my-3 bg-light shadow">
                             <div class="prompt mb-4">
-                                <p>What is the output of the following statements?</p>
-                                <pre class="fw-bold"><code>def foo():<br>    while True:<br>        yield 1<br>        yield 2<br>for _ in range(2): print(next(foo()))</code></pre>
+                                <p>Consider the following statement: <em>"The output of the following statements is 3"</em>.</p>
+                                <pre class="fw-bold"><code>def bar():<br>    yield 1 + 2<br>bar()</code></pre>
+                                <p>Is the statement <em>true</em> or <em>false</em>?</p>
                             </div>
                             <div class="form-check my-2">
                                 <input class="form-check-input" type="radio" name="6" id="6-0" value="true">
@@ -259,6 +260,33 @@
                             <div class="form-check my-2">
                                 <input class="form-check-input" type="radio" name="6" id="6-1" value="false">
                                 <label class="form-check-label" for="6-1"><span>False</span></label>
+                            </div>
+                            <button class="btn btn-outline-danger mt-3 px-5 quiz-reset-fieldset">Clear answer</button>
+                        </fieldset>
+                        <fieldset id="7" class="quiz-question-multiple-choice p-4 my-3 bg-light shadow">
+                            <div class="prompt mb-4">
+                                <p>Which of the following options <em>could</em> be an output of the following statements?</p>
+                                <pre class="fw-bold"><code>import random<br>def foobar():<br>    return random.randrange(0, 2)<br>print(foobar())</code></pre>
+                            </div>
+                            <div class="form-check my-2">
+                                <input class="form-check-input" type="checkbox" name="7" id="7-0" value="0">
+                                <label class="form-check-label" for="7-0"><kbd>0</kbd></label>
+                            </div>
+                            <div class="form-check my-2">
+                                <input class="form-check-input" type="checkbox" name="7" id="7-1" value="1">
+                                <label class="form-check-label" for="7-1"><kbd>1</kbd></label>
+                            </div>
+                            <div class="form-check my-2">
+                                <input class="form-check-input" type="checkbox" name="7" id="7-2" value="2">
+                                <label class="form-check-label" for="7-2"><span>There is no output</label>
+                            </div>
+                            <div class="form-check my-2">
+                                <input class="form-check-input" type="checkbox" name="7" id="7-3" value="3">
+                                <label class="form-check-label" for="7-3"><kbd>2</kbd></label>
+                            </div>
+                            <div class="form-check my-2">
+                                <input class="form-check-input" type="checkbox" name="7" id="7-4" value="3">
+                                <label class="form-check-label" for="7-4"><span><kbd>None</kbd></label>
                             </div>
                             <button class="btn btn-outline-danger mt-3 px-5 quiz-reset-fieldset">Clear answer</button>
                         </fieldset>
@@ -280,6 +308,7 @@
                         <a id="nav-4" href="#4"><span>4</span><span class="nav-feedback-color"></span></a>
                         <a id="nav-5" href="#5"><span>5</span><span class="nav-feedback-color"></span></a>
                         <a id="nav-6" href="#6"><span>6</span><span class="nav-feedback-color"></span></a>
+                        <a id="nav-7" href="#7"><span>6</span><span class="nav-feedback-color"></span></a>
                     </nav>
                 </div>
             </aside>
@@ -288,28 +317,25 @@
     <script>
         const questions = [
             {
-                "questionType": "single-choice",
                 "answers": [ {}, { "correct": true }, {}, {} ]
             },
             {
-                "questionType": "single-choice",
                 "answers": [ {}, {}, {}, { "correct": true } ]
             },
             {
-                "questionType": "single-choice",
                 "answers": [ {}, {}, {}, { "correct": true } ]
             },
             {
-                "questionType": "single-choice",
-                "answers": [ {}, { "correct": true }, {}, { "correct": true } ]
+                "answers": [ {}, { "correct": true }, {}, {} ]
             },
             {
-                "questionType": "short-answer",
-                "correct": "hi"
+                "correct": "2"
             },
             {
-                "questionType": "true-or-false",
-                "correct": true
+                "correct": false
+            },
+            {
+                "answers": [ { "correct": true }, { "correct": true }, {}, {}, {} ]
             }
         ];
 
